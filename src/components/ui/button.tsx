@@ -21,13 +21,15 @@ const buttonVariants = cva(
         google:
           "border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-all flex items-center gap-2",
         github:
-          "bg-zinc-900 dark:bg-zinc-50 text-white dark:text-zinc-900 hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-all flex items-center gap-2",
+          "bg-neutral-900 dark:bg-neutral-50 text-white dark:text-neutral-900 hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-all flex items-center gap-2",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
+        icon: "h-10 w-10 inline-flex items-center justify-center",
+        iconSm: "h-9 w-9 inline-flex items-center justify-center",
+        iconLg: "h-11 w-11 inline-flex items-center justify-center",
       },
     },
     defaultVariants: {
