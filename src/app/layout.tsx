@@ -3,7 +3,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import { ConvexClientProvider } from "./ConvexClientProvider";
 import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
-import Header from "@/components/Header";
+import Header from "@/components/header/Header";
 
 const manrope = Manrope({ subsets: ["latin"] });
 

@@ -5,27 +5,16 @@ import { cn } from "@/lib/utils";
 
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "./ui/button";
-import { LuHelpCircle, LuHelpingHand, LuMoonStar, LuSun } from "react-icons/lu";
+import { Button } from "../ui/button";
+import { LuHelpCircle } from "react-icons/lu";
 import SpaceSelector from "./SpaceSelector";
 import { usePathname } from "next/navigation";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
+import DarkModeEnabler from "./DarkModeEnabler";
+import UserMenuHeader from "./UserMenuHeader";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-
-  //Initialiser l'état du dark mode au chargement du composant
-  useEffect(() => {
-    setIsDarkMode(document.body.classList.contains("dark"));
-  }, []);
 
   const pathname = usePathname();
 
@@ -157,46 +146,13 @@ export default function Header() {
           variant={"outline"}
           size={"sm"}
           className="inline-flex items-center gap-2"
+          disabled
         >
           <LuHelpCircle className="size-4" />
           Aide
         </Button>
-        <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Button
-              variant={"outline"}
-              size={"iconSm"}
-            >
-              {isDarkMode ? (
-                <LuMoonStar className="size-4" />
-              ) : (
-                <LuSun className="size-4" />
-              )}
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Thème</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={() => {
-                //Toggle Body class "dark"
-                document.body.classList.remove("dark");
-                setIsDarkMode(false);
-              }}
-            >
-              Light
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => {
-                //Toggle Body class "dark"
-                document.body.classList.add("dark");
-                setIsDarkMode(true);
-              }}
-            >
-              Dark
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <DarkModeEnabler />
+        <UserMenuHeader />
       </div>
     </header>
   );
