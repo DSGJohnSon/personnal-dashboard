@@ -16,9 +16,7 @@ export default function Page() {
 
   return (
     <div className="h-[200vh] px-24 py-48">
-      <h1 className="font-bold text-3xl mb-8">
-        Dashboard
-      </h1>
+      <h1 className="font-bold text-3xl mb-8">Dashboard</h1>
       {currentUser.data && currentUser.data !== null && (
         <div className="inline-flex items-center gap-8 border border-neutral-200 rounded-md p-4">
           <div className="flex items-center gap-4">
@@ -67,7 +65,7 @@ export default function Page() {
           </Button>
         </div>
       )}
-      
+
       <h1 className="max-w-[500px] mt-8">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dolores
         laboriosam id ipsam quis voluptate laudantium quasi soluta beatae quod

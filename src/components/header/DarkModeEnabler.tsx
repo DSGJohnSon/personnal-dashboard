@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,46 +7,34 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Button } from "../ui/button";
-import { LuMoonStar, LuSun } from "react-icons/lu";
+import { LuMonitor, LuMoonStar, LuSun } from "react-icons/lu";
+import { useTheme } from "next-themes";
 
 export default function DarkModeEnabler() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  //Initialiser l'état du dark mode au chargement du composant
-  useEffect(() => {
-    setIsDarkMode(document.body.classList.contains("dark"));
-  }, []);
+  const { setTheme } = useTheme();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant={"outline"} size={"iconSm"}>
-          {isDarkMode ? (
-            <LuMoonStar className="size-4" />
-          ) : (
-            <LuSun className="size-4" />
-          )}
+        <Button variant="outline" size="iconSm">
+          <LuSun className="size-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <LuMoonStar className="absolute size-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Modifier le thème</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuLabel>Thème</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem
-          onClick={() => {
-            //Toggle Body class "dark"
-            document.body.classList.remove("dark");
-            setIsDarkMode(false);
-          }}
-        >
-          Light
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          <LuSun className="mr-2 size-3" />
+          Clair
         </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => {
-            //Toggle Body class "dark"
-            document.body.classList.add("dark");
-            setIsDarkMode(true);
-          }}
-        >
-          Dark
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          <LuMoonStar className="mr-2 size-3" />
+          Sombre
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          <LuMonitor className="mr-2 size-3" />
+          Système
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
