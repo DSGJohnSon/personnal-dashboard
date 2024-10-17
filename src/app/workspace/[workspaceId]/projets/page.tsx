@@ -1,11 +1,12 @@
 "use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useCurrentUser } from "@/features/auth/api/useCurrentUser";
 import { useAuthActions } from "@convex-dev/auth/react";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React from "react";
 import { LuLogOut } from "react-icons/lu";
 
@@ -14,11 +15,22 @@ export default function Page() {
   const router = useRouter();
   const currentUser = useCurrentUser();
 
+  const workspaceId = useParams().workspaceId;
+
   return (
     <div className="h-[200vh] px-24 py-48">
-      <h1 className="font-bold text-3xl mb-8">
-        Budgets
-      </h1>
+      <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href={`/workspace/${workspaceId}`}>Workspace</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbPage>Listes</BreadcrumbPage>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+      <h1 className="font-bold text-3xl mb-8">Projets</h1>
       {currentUser.data && currentUser.data !== null && (
         <div className="inline-flex items-center gap-8 border border-neutral-200 rounded-md p-4">
           <div className="flex items-center gap-4">
@@ -67,7 +79,7 @@ export default function Page() {
           </Button>
         </div>
       )}
-      
+
       <h1 className="max-w-[500px] mt-8">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dolores
         laboriosam id ipsam quis voluptate laudantium quasi soluta beatae quod

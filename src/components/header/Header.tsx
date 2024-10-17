@@ -7,16 +7,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { LuHelpCircle } from "react-icons/lu";
-import SpaceSelector from "./SpaceSelector";
+import WorkspaceSelector from "./WorkpaceSelector";
 import { usePathname } from "next/navigation";
 import DarkModeEnabler from "./DarkModeEnabler";
 import UserMenuHeader from "./UserMenuHeader";
+import { useWorkspaceId } from "@/hooks/use-workspace-id";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const pathname = usePathname();
+  const workspaceId = useWorkspaceId();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,28 +60,9 @@ export default function Header() {
             Syncra™
           </Link>
         </div>
-        <SpaceSelector isScrolled={isScrolled} />
+        <WorkspaceSelector />
         <nav>
           <ul className="flex gap-2">
-            <li>
-              <Button
-                variant={"link"}
-                className={cn(
-                  "flex items-center gap-2",
-                  "text-neutral-900/70 hover:text-neutral-900",
-                  "dark:text-neutral-100 dark:hover:text-neutral-50",
-                  "transition-all duration-500",
-                  pathname.includes("/dashboard")
-                    ? "text-primary underline"
-                    : "hover:no-underline"
-                )}
-                asChild
-              >
-                <Link href="/dashboard" title="Accueil">
-                  Dashboard
-                </Link>
-              </Button>
-            </li>
             <li>
               <Button
                 variant={"link"}
@@ -95,7 +77,7 @@ export default function Header() {
                 )}
                 asChild
               >
-                <Link href="/projets" title="Accueil">
+                <Link href={`/workspace/${workspaceId}/projets`} title="Accueil">
                   Projets
                 </Link>
               </Button>
@@ -114,7 +96,7 @@ export default function Header() {
                 )}
                 asChild
               >
-                <Link href="/listes" title="Accueil">
+                <Link href={`/workspace/${workspaceId}/listes`} title="Accueil">
                   Listes
                 </Link>
               </Button>
@@ -133,7 +115,7 @@ export default function Header() {
                 )}
                 asChild
               >
-                <Link href="/budgets" title="Accueil">
+                <Link href={`/workspace/${workspaceId}/budgets`} title="Accueil">
                   Budgets
                 </Link>
               </Button>

@@ -82,3 +82,59 @@ body::-webkit-scrollbar {
     @apply bg-background text-foreground;
   }
 }
+
+/* CSS FOR WORKSPACES GRADIENT */
+.neutral-workspace-gradient {
+  @apply from-neutral-950 to-neutral-300 dark:from-neutral-50 dark:to-neutral-400
+}
+.red-workspace-gradient {
+  @apply from-red-950 to-red-500
+}
+.orange-workspace-gradient {
+  @apply from-orange-950 to-orange-500
+}
+.amber-workspace-gradient {
+  @apply from-amber-950 to-amber-500
+}
+.yellow-workspace-gradient {
+  @apply from-yellow-950 to-yellow-500
+}
+.lime-workspace-gradient {
+  @apply from-lime-950 to-lime-500
+}
+.green-workspace-gradient {
+  @apply from-green-950 to-green-500
+}
+.emerald-workspace-gradient {
+  @apply from-emerald-950 to-emerald-500
+}
+.teal-workspace-gradient {
+  @apply from-teal-950 to-teal-500
+}
+.cyan-workspace-gradient {
+  @apply from-cyan-950 to-cyan-500
+}
+.sky-workspace-gradient {
+  @apply from-sky-950 to-sky-500
+}
+.blue-workspace-gradient {
+  @apply from-blue-950 to-blue-500
+}
+.indigo-workspace-gradient {
+  @apply from-indigo-950 to-indigo-500
+}
+.violet-workspace-gradient {
+  @apply from-violet-950 to-violet-500
+}
+.purple-workspace-gradient {
+  @apply from-purple-950 to-purple-500
+}
+.fuchsia-workspace-gradient {
+  @apply from-fuchsia-950 to-fuchsia-500
+}
+.pink-workspace-gradient {
+  @apply from-pink-950 to-pink-500
+}
+.rose-workspace-gradient {
+  @apply from-rose-950 to-rose-500
+}

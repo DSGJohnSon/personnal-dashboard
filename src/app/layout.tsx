@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
+
 import { Manrope } from "next/font/google";
 import "./globals.css";
+
 import { ConvexClientProvider } from "./ConvexClientProvider";
 import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
-import Header from "@/components/header/Header";
+
+import { ThemeProvider } from "@/components/theme-provider";
+import { Modals } from "@/components/modal";
+import { Toaster } from "@/components/ui/toaster";
 
 const manrope = Manrope({ subsets: ["latin"] });
 
@@ -37,7 +42,18 @@ export default function RootLayout({
     <ConvexAuthNextjsServerProvider>
       <html lang="fr">
         <body className={`${manrope.className} antialiased`}>
-          <ConvexClientProvider>{children}</ConvexClientProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ConvexClientProvider>
+              <Modals />
+              <Toaster />
+              {children}
+            </ConvexClientProvider>
+          </ThemeProvider>
         </body>
       </html>
     </ConvexAuthNextjsServerProvider>
