@@ -36,7 +36,7 @@ export default function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 flex justify-between items-center transition-all duration-500",
         isScrolled
-          ? "bg-background/50 backdrop-blur-sm py-2 px-4"
+          ? "bg-background/50 backdrop-blur-lg py-2 px-4"
           : "bg-transparent py-4 px-8"
       )}
     >

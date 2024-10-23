@@ -8,6 +8,11 @@ interface useGetWorkspaceProps {
 }
 
 export const useGetWorkspace = ({ id } : useGetWorkspaceProps) => {
+
+    if (!id) {
+        throw new Error("id is required");
+    }
+
     const data = useQuery(api.workspaces.getById, { id });
     const isLoading = data === undefined;
 

@@ -5,7 +5,7 @@ import {
 } from "@convex-dev/auth/nextjs/server";
 
 const isAuthPage = createRouteMatcher(["/login"]);
-const isProtectedRoute = createRouteMatcher(["/*"]);
+const isPublicRoute = createRouteMatcher(["/", "/login"]);
 
 export default convexAuthNextjsMiddleware((request, { convexAuth }) => {
   if (isAuthPage(request) && convexAuth.isAuthenticated()) {
@@ -13,7 +13,7 @@ export default convexAuthNextjsMiddleware((request, { convexAuth }) => {
   }
   if (
     !isAuthPage(request) &&
-    isProtectedRoute(request) &&
+    !isPublicRoute(request) &&
     !convexAuth.isAuthenticated()
   ) {
     return nextjsMiddlewareRedirect(request, "/login");

@@ -41,7 +41,11 @@ export default function UserMenuHeader() {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           className="flex items-center gap-2 cursor-pointer"
-          onClick={() => signOut().then(() => router.replace("/"))}
+          onClick={() => {
+            signOut().then(() => {
+              window.location.reload();
+            });
+          }}
         >
           <LuLogOut />
           Logout
